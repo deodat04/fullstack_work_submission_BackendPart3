@@ -6,6 +6,10 @@ app.use(morgan("tiny"));
 
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :post-data'));
 
+const cors = require('cors')
+
+app.use(cors())
+
 morgan.token('post-data', (req, res) => {
     if (req.method === 'POST') {
       return JSON.stringify(req.body);
